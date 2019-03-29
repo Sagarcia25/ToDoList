@@ -31,18 +31,21 @@ class ToDoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return toDos.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCellIdentifier") else {
+            fatalError("Could not dequeue a cell")
+        }
+        
+        let todo = toDos[indexPath.row]
+        cell.textLabel?.text = todo.title
+        
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.
