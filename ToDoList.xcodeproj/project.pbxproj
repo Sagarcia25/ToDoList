@@ -56,9 +56,9 @@
 		7A877D2C224D9D0500AB0A01 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				7A877D2D224D9D0500AB0A01 /* AppDelegate.swift */,
 				7A877D3F224DA3C600AB0A01 /* ToDo.swift */,
 				7A877D41224DA4F000AB0A01 /* ToDoTableViewController.swift */,
-				7A877D2D224D9D0500AB0A01 /* AppDelegate.swift */,
 				7A877D31224D9D0500AB0A01 /* Main.storyboard */,
 				7A877D34224D9D0600AB0A01 /* Assets.xcassets */,
 				7A877D36224D9D0600AB0A01 /* LaunchScreen.storyboard */,
