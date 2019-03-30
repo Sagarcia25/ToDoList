@@ -32,6 +32,15 @@ class ToDoViewController: UITableViewController {
         updateSaveButtonState()
     }
     
+    @IBAction func returnPressed(_ sender: UITextField) {
+        titleTextField.resignFirstResponder()
+    }
+    
+    @IBAction func isCompleteButtonTapped(_ sender: UIButton) {
+        isCompleteButton.isSelected = !isCompleteButton.isSelected
+    }
+    
+    
     func updateSaveButtonState(){
         let text = titleTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
@@ -41,12 +50,12 @@ class ToDoViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
     }
 
     /*
