@@ -20,12 +20,9 @@ class ToDoViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateDueDateLabel(date: dueDatePickerView.date)
         updateSaveButtonState()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     @IBAction func textEditingChanged(_ sender: UITextField) {
@@ -40,10 +37,18 @@ class ToDoViewController: UITableViewController {
         isCompleteButton.isSelected = !isCompleteButton.isSelected
     }
     
+    @IBAction func datePickerChanged(_ sender: UIDatePicker) {
+        updateDueDateLabel(date: dueDatePickerView.date)
+    }
+    
     
     func updateSaveButtonState(){
         let text = titleTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty
+    }
+    
+    func updateDueDateLabel(date: Date){
+        dueDateLabel.text = ToDo.dueDateFormatter.string(from: date)
     }
     
     // MARK: - Table view data source

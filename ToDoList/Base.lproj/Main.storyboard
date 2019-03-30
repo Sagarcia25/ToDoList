@@ -125,6 +125,9 @@
                                                     <date key="date" timeIntervalSinceReferenceDate="575524573.01649201">
                                                         <!--2019-03-29 03:56:13 +0000-->
                                                     </date>
+                                                    <connections>
+                                                        <action selector="datePickerChanged:" destination="H2g-nd-Qx5" eventType="primaryActionTriggered" id="x2s-3Z-Np7"/>
+                                                    </connections>
                                                 </datePicker>
                                             </subviews>
                                             <constraints>
