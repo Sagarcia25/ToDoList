@@ -28,6 +28,10 @@ class ToDoViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    @IBAction func textEditingChanged(_ sender: UITextField) {
+        updateSaveButtonState()
+    }
+    
     func updateSaveButtonState(){
         let text = titleTextField.text ?? ""
         saveButton.isEnabled = !text.isEmpty

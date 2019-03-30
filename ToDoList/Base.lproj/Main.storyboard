@@ -76,6 +76,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="H2g-nd-Qx5" eventType="editingChanged" id="Mwy-9R-ERs"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
