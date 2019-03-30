@@ -17,9 +17,11 @@ class ToDoViewController: UITableViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    var isEndDatePickerHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dueDatePickerView.date = Date().addingTimeInterval(86400)
         updateDueDateLabel(date: dueDatePickerView.date)
         updateSaveButtonState()
         
@@ -62,7 +64,38 @@ class ToDoViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 1
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let normaCelllHeight = CGFloat(44)
+        let largeCellHeight = CGFloat(200)
+        
+        switch (indexPath) {
+        case [1,0]:
+            return isEndDatePickerHidden ? normaCelllHeight : largeCellHeight
+        case [2,0]:
+            return largeCellHeight
+        default:
+            return normaCelllHeight
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt
+        indexPath: IndexPath) {
+        print(indexPath)
+        switch (indexPath) {
+        case [1,0]:
+            
+            isEndDatePickerHidden = !isEndDatePickerHidden
+            
+            dueDateLabel.textColor = isEndDatePickerHidden ? .black : tableView.tintColor
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
 
+        default:
+            break
+        }
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
