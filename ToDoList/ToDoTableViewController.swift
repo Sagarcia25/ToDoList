@@ -28,11 +28,20 @@ class ToDoTableViewController: UITableViewController {
             toDos = ToDo.loadSampleToDo()
             
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @IBAction func prepareToDoList(segue: UIStoryboardSegue){
+        
+        guard segue.identifier == "saveUnwind" else {return}
+        
+        let sourceViewController = segue.source as! ToDoViewController
+        
+        if let todo = sourceViewController.todo{
+            let newIndexPath = IndexPath(row: toDos.count, section: 0)
+            
+            toDos.append(todo)
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
     }
 
     // MARK: - Table view data source

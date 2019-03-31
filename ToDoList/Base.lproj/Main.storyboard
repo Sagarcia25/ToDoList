@@ -183,7 +183,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ljW-EU-clY">
                             <connections>
-                                <segue destination="NPd-F2-LUZ" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="pnd-Mg-Zee"/>
+                                <segue destination="NPd-F2-LUZ" kind="unwind" identifier="saveUnwind" unwindAction="prepareToDoListWithSegue:" id="qIK-MG-3FC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
