@@ -9,17 +9,13 @@
 import UIKit
 
 class ToDoTableViewController: UITableViewController {
-
-    @IBAction func unwindToToDoList(segue: UIStoryboardSegue){
-        
-    }
     
     var toDos = [ToDo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
-
+        
         if let savedToDos = ToDo.loadTodos(){
             toDos = savedToDos
             
@@ -29,18 +25,38 @@ class ToDoTableViewController: UITableViewController {
             
         }
     }
+// cancel button
+    @IBAction func unwindToToDoList(segue: UIStoryboardSegue){
+        
+    }
+    
+
     
     @IBAction func prepareToDoList(segue: UIStoryboardSegue){
         
         guard segue.identifier == "saveUnwind" else {return}
-        
         let sourceViewController = segue.source as! ToDoViewController
         
         if let todo = sourceViewController.todo{
-            let newIndexPath = IndexPath(row: toDos.count, section: 0)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                toDos[selectedIndexPath.row] = todo
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: toDos.count, section: 0)
+                toDos.append(todo)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+                }
+            }
+        }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetails"{
+            let toDoViewController = segue.destination as? ToDoViewController
+            let indexPath = tableView.indexPathForSelectedRow!
+            let selectedToDo = toDos[indexPath.row]
+            toDoViewController?.todo = selectedToDo
             
-            toDos.append(todo)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
 
