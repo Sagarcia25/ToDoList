@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoTableViewController: UITableViewController {
+class ToDoTableViewController: UITableViewController, ToDoCellDelegate {
     
     var toDos = [ToDo]()
     
@@ -49,6 +49,15 @@ class ToDoTableViewController: UITableViewController {
             }
         }
     
+    func checkmarkTapped(sender: ToDoCell){
+        if let indexPath = tableView.indexPath(for: sender){
+            var todo = toDos[indexPath.row]
+            todo.isComplete = !todo.isComplete
+            toDos[indexPath.row] = todo
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetails"{
@@ -86,6 +95,7 @@ class ToDoTableViewController: UITableViewController {
         let todo = toDos[indexPath.row]
         cell.titleLabel?.text = todo.title
         cell.isCompleteButton.isSelected = todo.isComplete
+        cell.delegate = self
         
         
         

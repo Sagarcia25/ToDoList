@@ -34,6 +34,7 @@
                                             <state key="normal" image="Unchecked"/>
                                             <state key="selected" image="Checked"/>
                                             <connections>
+                                                <action selector="completeButtonTapped" destination="vl0-Uh-kD4" eventType="touchUpInside" id="hMy-BK-ETO"/>
                                                 <action selector="isCompleteButtonTapped:" destination="H2g-nd-Qx5" eventType="touchUpInside" id="3CB-Z7-ydg"/>
                                             </connections>
                                         </button>
